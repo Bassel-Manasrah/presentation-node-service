@@ -1,0 +1,33 @@
+.container {
+  width: 200px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  background-color: bisque;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.container:hover {
+  background-color: rgb(255, 202, 137);
+}
+
+.title_container {
+  margin-top: auto;
+  background-color: white;
+  padding: 4px;
+  display: flex;
+}
+
+.deleteIcon {
+  margin-left: auto;
+  font-size: 1.3rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.deleteIcon:hover {
+  color: darkred;
+  transform: scale(1.1);
+}
