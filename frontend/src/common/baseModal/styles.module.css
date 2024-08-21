@@ -1,0 +1,43 @@
+.modelOverlay {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+}
+
+.modalContainer {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: 1px solid black;
+  background-color: whitesmoke;
+  padding: 32px;
+  border-radius: 4px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: end;
+  margin-top: auto;
+  gap: 0.5rem;
+}
+
+.modalTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+}
