@@ -62,10 +62,11 @@ export const usePresentations = (): UsePresentationsReturn => {
     const url = `${process.env.REACT_APP_API_URL}/presentations/${title}`;
 
     try {
-      const response = await axios.delete(url);
       setPresentations((prevPresentations) =>
         prevPresentations.filter((presentation) => presentation.title !== title)
       );
+      const response = await axios.delete(url);
+
       setErrors({});
     } catch (e) {
       setErrors({ deleteError: "Failed to delete presentation." });
