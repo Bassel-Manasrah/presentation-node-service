@@ -60,10 +60,10 @@ export const SlideScreen: FC = () => {
   */
   const modalOnApply = async () => {
     if (mode === Mode.ADD) {
-      await addSlide(addSlideIndex, modalTitle, modalContent);
+      addSlide(addSlideIndex, modalTitle, modalContent);
       setSlideIndex(addSlideIndex);
     } else if (mode === Mode.EDIT) {
-      await updateSlide(slideIndex, modalTitle, modalContent);
+      updateSlide(slideIndex, modalTitle, modalContent);
     }
     setModalVisible(false);
     setMode(Mode.VIEW);
