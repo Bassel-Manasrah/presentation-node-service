@@ -61,7 +61,7 @@ export const SlideScreen: FC = () => {
   const modalOnApply = async () => {
     if (mode === Mode.ADD) {
       await addSlide(addSlideIndex, modalTitle, modalContent);
-      setSlideIndex(slideIndex + 1);
+      setSlideIndex(addSlideIndex);
     } else if (mode === Mode.EDIT) {
       await updateSlide(slideIndex, modalTitle, modalContent);
     }
@@ -96,9 +96,7 @@ export const SlideScreen: FC = () => {
 
   // Set the mode to ADD and determine the position of the new slide
   const onAddSlideClick = (position: Position) => {
-    setAddSlideIndex(
-      position === Position.AFTER ? slideIndex + 1 : slideIndex - 1
-    );
+    setAddSlideIndex(position === Position.AFTER ? slideIndex + 1 : slideIndex);
     setMode(Mode.ADD);
   };
 
