@@ -1,0 +1,38 @@
+.container {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkblue;
+}
+
+.contentContainer {
+  flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.content {
+  font-size: 1.5em;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+}
