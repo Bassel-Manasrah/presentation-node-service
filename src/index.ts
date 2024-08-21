@@ -1,5 +1,6 @@
 import express, { Router } from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 import dotenv from "dotenv";
 import router from "./routes/index";
 import { connectDB } from "./config/database";
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000;
 // middleware setup
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 
 // routes setup
 app.use("/", router);
