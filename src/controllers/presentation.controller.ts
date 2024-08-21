@@ -11,6 +11,11 @@ import {
 */
 const handleAddPresentation = async (req: Request, res: Response) => {
   const { title, authors } = req.body;
+  const presentation = await getPresentationByTitle(title);
+  if (presentation != null) {
+    return res.sendStatus(400);
+  }
+
   const newPresentation = await addPresentation(title, authors);
   return res
     .status(201)
