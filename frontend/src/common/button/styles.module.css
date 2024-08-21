@@ -1,0 +1,23 @@
+.button {
+  padding: 1rem 2rem;
+  font-size: 1.3em;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: gray;
+  color: black;
+  cursor: default;
+}
+
+.button:hover {
+  background-color: darkcyan;
+  transform: scale(1.05);
+}
+
+.button:disabled:hover {
+  background-color: gray;
+  transform: none;
+}
