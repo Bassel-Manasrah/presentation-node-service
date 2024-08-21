@@ -3,22 +3,44 @@ import { ISlide } from "../models/slide.model";
 import { getLength, getPresentationByTitle } from "./presentation.service";
 
 /**
- * Adds a new slide to a presentation.
+ * Retrieves all slides from a specific presentation.
+ *
+ * @param presentationTitle - The title of the presentation to retrieve slides from.
+ * @returns A promise that resolves to an array of slides, or null if the presentation is not found.
+ */
+export const getSlides = async (
+  presentationTitle: string
+): Promise<ISlide[] | null> => {
+  const presentation = await getPresentationByTitle(presentationTitle);
+  if (!presentation) return null;
+  return presentation.slides;
+};
+
+/**
+ * Adds a new slide to a presentation at a specific index.
  *
  * @param presentationTitle - The title of the presentation to which the slide is to be added.
  * @param slideTitle - The title of the slide to be added.
  * @param slideContent - The content of the slide to be added.
+ * @param slideIndex - The index at which the slide should be inserted.
  * @returns A promise that resolves to the updated presentation with the new slide, or null if the presentation is not found.
  */
 export const addSlide = async (
   presentationTitle: string,
   slideTitle: string,
-  slideContent: string
+  slideContent: string,
+  slideIndex: number
 ): Promise<IPresentation | null> => {
-  return await Presentation.findOneAndUpdate(
-    { title: presentationTitle },
-    { $push: { slides: { title: slideTitle, content: slideContent } } }
-  );
+  const presentation = await Presentation.findOne({ title: presentationTitle });
+  if (!presentation) return null;
+
+  // Insert the new slide at the specified index
+  const newSlide = { title: slideTitle, content: slideContent };
+
+  presentation.slides.splice(slideIndex, 0, newSlide);
+
+  await presentation.save();
+  return presentation;
 };
 
 /**

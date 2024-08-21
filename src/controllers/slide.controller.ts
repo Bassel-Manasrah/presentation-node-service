@@ -2,21 +2,42 @@ import { Request, Response } from "express";
 import {
   addSlide,
   deleteSlide,
+  getSlides,
   isValidSlide,
   updateSlide,
 } from "../services/slide.service";
+
+/*
+  handler for getting slides of a presentation
+*/
+const handleGetSlides = async (req: Request, res: Response): Promise<void> => {
+  const { presentationTitle } = req.params;
+
+  const slides = await getSlides(presentationTitle);
+
+  if (slides === null) {
+    res.status(404).json({ error: "Presentation not found" });
+  } else {
+    res.status(200).json({ status: "success", slides });
+  }
+};
 
 /*
   handler for adding a slide to a presentation
 */
 const handleAddSlide = async (req: Request, res: Response): Promise<void> => {
   const { presentationTitle } = req.params;
-  const { title: slideTitle, content: slideContent } = req.body;
+  const {
+    title: slideTitle,
+    content: slideContent,
+    index: slideIndex,
+  } = req.body;
 
   const updatedPresentation = await addSlide(
     presentationTitle,
     slideTitle,
-    slideContent
+    slideContent,
+    slideIndex
   );
   res
     .status(201)
@@ -67,4 +88,9 @@ const handleDeleteSlide = async (req: Request, res: Response) => {
   }
 };
 
-export default { handleAddSlide, handleUpdateSlide, handleDeleteSlide };
+export default {
+  handleAddSlide,
+  handleUpdateSlide,
+  handleDeleteSlide,
+  handleGetSlides,
+};

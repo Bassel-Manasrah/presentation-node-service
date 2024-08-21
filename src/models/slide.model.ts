@@ -8,8 +8,8 @@ export interface ISlide {
 
 // define the schema for the Slide model
 export const SlideSchema: Schema = new Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
+  title: { type: String, default: "" },
+  content: { type: String, default: "" },
 });
 
 // create and export the Slide model using the schema

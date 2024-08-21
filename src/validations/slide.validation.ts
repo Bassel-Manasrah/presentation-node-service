@@ -1,10 +1,20 @@
 import { object, string, number } from "yup";
 
+// schema to validate the parameters for getting slides of a presentation
+export const getSlidesSchema = object().shape({
+  param: object({
+    presentationTitle: string()
+      .required("presentation title parameter is required")
+      .notOneOf([""], "presentation title parameter cannot be an empty string"),
+  }),
+});
+
 // schema to validate the parameters for adding a slide
 export const addSlideSchema = object().shape({
   body: object({
-    title: string().required("title field is required"),
-    content: string().required("content field is required"),
+    title: string().defined(),
+    content: string().defined(),
+    index: number().required("index field is required"),
   }),
 });
 
@@ -20,8 +30,8 @@ export const updateSlideSchema = object().shape({
       .min(0, "slide index parameter should be non negative"),
   }),
   body: object({
-    title: string().required("title field is required"),
-    content: string().required("content field is required"),
+    title: string().defined(),
+    content: string().defined(),
   }),
 });
 
