@@ -16,7 +16,7 @@ export const TextInput: FC<textInputProps> = ({
   onChange,
   multiLine = false,
   placeholder = "",
-  rows = 3,
+  rows = 4,
 }) => {
   const sharedProps = {
     value,
@@ -26,7 +26,7 @@ export const TextInput: FC<textInputProps> = ({
   };
 
   if (multiLine) {
-    return <textarea {...sharedProps} rows={rows} />;
+    return <textarea style={{ resize: "none" }} {...sharedProps} rows={rows} />;
   }
 
   return <input type="text" {...sharedProps} />;
