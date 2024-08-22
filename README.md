@@ -7,12 +7,12 @@ This project consists of a frontend React application and a backend Node.js serv
 To build and start the Docker containers, use the following command:
 
 ```bash
-docker compose up --build
+docker compose up --build -d
 ```
 
-## Stopping the Application
+Once the application is running, you can view it by going to http://localhost:3000 in your web browser.
 
-If you need to stop the application, press Ctrl + C in the terminal where docker compose up is running.
+## Stopping the Application
 
 To remove the containers and networks, use the following command:
 
